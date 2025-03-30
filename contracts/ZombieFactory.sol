@@ -1,10 +1,12 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract ZombieFactory {
+    event NewZombie(uint zombieId, string name, uint dna);
+
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
     Zombie[] public zombies;
-    Zombie girgis = Zombie("Girgis", 13432);
     struct Zombie {
         string name;
         uint dna;
@@ -17,6 +19,8 @@ contract ZombieFactory {
 
     function _createZombie(string memory _name, uint _dna) private {
         zombies.push(Zombie(_name, _dna));
+        uint id = zombies.length - 1;
+        emit NewZombie(id, _name, _dna);
     }
 
     function _generateRandomDna(
