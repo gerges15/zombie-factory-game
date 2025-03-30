@@ -10,6 +10,11 @@ contract ZombieFactory {
         uint dna;
     }
 
+    function createRandomZombie(string memory _name) public {
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
     function _createZombie(string memory _name, uint _dna) private {
         zombies.push(Zombie(_name, _dna));
     }
