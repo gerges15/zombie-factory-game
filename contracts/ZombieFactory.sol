@@ -36,5 +36,3 @@ contract ZombieFactory {
         return rand % dnaModulus;
     }
 }
-
-contract ZombieFeeding is ZombieFactory {}
