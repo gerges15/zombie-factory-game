@@ -7,6 +7,9 @@ contract ZombieFactory {
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
     Zombie[] public zombies;
+    mapping(uint => address) public zombieToOwner;
+    mapping(address => uint) ownerZombieCount;
+
     struct Zombie {
         string name;
         uint dna;
