@@ -14,6 +14,8 @@ contract ZombieFactory is Ownable {
     struct Zombie {
         string name;
         uint dna;
+        uint32 level;
+        uint32 readyTime;
     }
 
     function createRandomZombie(string memory _name) public {
