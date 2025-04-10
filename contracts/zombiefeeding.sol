@@ -26,6 +26,10 @@ interface KittyInterface {
 contract ZombieFeeding is ZombieFactory {
     KittyInterface kittyContract;
 
+    function _triggerCooldown(Zombie storage _zombie) internal {
+        _zombie.readyTime = uint32(block.timestamp + cooldownTime);
+    }
+
     function setKittyContractAddress(address _address) external onlyOwner {
         kittyContract = KittyInterface(_address);
     }
