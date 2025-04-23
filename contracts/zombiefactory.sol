@@ -19,8 +19,12 @@ contract ZombieFactory is Ownable {
         uint32 readyTime;
     }
 
-    function createRandomZombie(string memory _name) public {
+    modifier HashZeroZombie() {
         require(ownerZombieCount[msg.sender] == 0);
+        _;
+    }
+
+    function createRandomZombie(string memory _name) public HashZeroZombie {
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
