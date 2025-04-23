@@ -14,7 +14,7 @@ contract ZombieAttack is ZombieHelper {
                 keccak256(
                     abi.encodePacked(block.timestamp, msg.sender, randNonce)
                 )
-            ) % 100;
+            ) % _modulus;
     }
 
     function attack(
